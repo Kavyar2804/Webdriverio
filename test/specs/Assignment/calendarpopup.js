@@ -15,9 +15,8 @@ it('Redus Calender popup' , async()=>{
     await browser.$("//tbody//tr//td[contains(. ,'11')]").click()
     await browser.$("#search_btn").click()
     await browser.pause(10000)
+   
 
 
 })
-
-
 })
