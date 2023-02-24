@@ -1,8 +1,10 @@
-//Opening an account by entering all the values for fields
-
+//Test Scenarion: As a customer Open an account by entering all the values for fields and login as 
+//staff and approve the apllication
+//export{accountno}
 
 describe('Opening account and Approve', ()=>{
    let appno=0
+   let accountno=0
 
 it('EntertheApplicationdetails', async ()=>{
    await browser.url("http://testingserver/domain/Online_Banking_System/")
@@ -115,11 +117,18 @@ let account = accno.filter((accno)=>{
 
    return accno>=0 && accno<=9
 })
-let accountno = account.join("").trim()
+accountno = account.join("").trim()
 console.log(accountno)
 
 await browser.acceptAlert()
 
 })
+
+it('Logout from application', async ()=>{
+
+   await browser.$("[name='logout_btn']").click()
+
+})
+
 
 })

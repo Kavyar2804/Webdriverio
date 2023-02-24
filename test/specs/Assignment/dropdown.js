@@ -12,8 +12,8 @@ describe('facebook', ()=>{
         await driver.$("[name='reg_passwd__']").setValue('Champu@143')
         await driver.$("#day").selectByVisibleText('17')
         //await driver.pause(2000)
-        await driver.$('#month').selectByVisibleText('Mar')
-        await driver.$('#year').selectByVisibleText('1999')
+        await driver.$('#month').selectByIndex(2)
+        await driver.$('#year').selectByAttribute('value', '2017')
          let all = await driver.$$('#year')
          console.log(all);
         await driver.$("label[class='_58mt']").click()
