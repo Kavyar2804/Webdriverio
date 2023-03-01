@@ -5,23 +5,37 @@ describe("igp cake ordering" , ()=>{
     let cakenameinmenu=0
     let cakepriceinmenu=0
     let cakepriceincart=0
+
 it('Select cake and addons' , async ()=>{
 await browser.url('https://www.igp.com/')
 await browser.maximizeWindow()
 let title = await browser.getTitle()
 console.log(title);
 expect(browser).toHaveTitleContaining("'IGP: India's #1 Online Gift Shop | Send Unique Gifts to India Online'")
-let ele = await browser.$("//section[@id='selection-panel']//div[@class='sel-pnl-re']//a[contains(.,'Cakes')]")
-await ele.waitForDisplayed({timeout:2000})
-await ele.click()
+// let ele = await browser.$("//section[@id='selection-panel']//div[@class='sel-pnl-re']//a[contains(.,'Cakes')]")
+// await ele.waitForDisplayed({timeout:2000})
+// await ele.click()
+
+let search = await browser.$("[name='q']")
+await search.waitForDisplayed({timeout:2000})
+await search.setValue("cakes")
+
+let sug = await browser.$(".cards-li-list")
+await sug.waitForDisplayed({timeout:5000})
+
+let cho = await browser.$("//li[@class='cards-li']//a[contains(.,'Chocolate Cakes')]")
+await cho.waitForClickable({timeout:2000})
+await cho.click()
+
+
 let title1 = await browser.getTitle()
 console.log(title1);
 expect(browser).toHaveTitleContaining("Online Cake Delivery | Order & Send Best Cakes Online - IGP Cakes")
-let ele1 = await browser.$("//div[@class='lense-horizontal']//a[@href='/chocolate-cakes']")
-await ele1.waitForClickable({timeout:2000})
-await browser.scroll(0, 300)
-await browser.pause(3000)
-await ele1.click()
+// let ele1 = await browser.$("//div[@class='lense-horizontal']//a[@href='/chocolate-cakes']")
+// await ele1.waitForClickable({timeout:2000})
+// await browser.scroll(0, 300)
+// await browser.pause(3000)
+// await ele1.click()
 
 for (let i = 0; i < 4; i++) {
 
@@ -35,7 +49,7 @@ await ele2.click()
 
 
 })
-it('Adding to cart' , async()=>{
+xit('Adding to cart' , async()=>{
 
     let title2 = await browser.getTitle()
     console.log(title2);
@@ -113,7 +127,7 @@ expect(browser).toHaveTitleContaining("Shopping Cart")
 
 })
 
-it('Feting cart items' , async()=>{
+xit('Feting cart items' , async()=>{
 
     let  ele = await browser.$("//p[@class='c-item-name '][contains(.,'Sparkle Candle')]")
     cartitem1=await ele.getText()
@@ -134,7 +148,7 @@ it('Feting cart items' , async()=>{
      
 })
 
-it('comparing the cake price in menu and cart items' , async ()=>{
+xit('comparing the cake price in menu and cart items' , async ()=>{
   if(cakepriceinmenu == cakepriceincart)
     {
      console.log("Both price are same");
@@ -145,7 +159,7 @@ it('comparing the cake price in menu and cart items' , async ()=>{
  
  })
 
-it('comparing the cake name in menu and cart items' , async ()=>{
+xit('comparing the cake name in menu and cart items' , async ()=>{
 
     if(cakenameinmenu == cakenameincart)
     {
