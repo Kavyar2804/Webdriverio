@@ -47,7 +47,7 @@ get nomintxtfild()
 {
     return $("[name='nominee_name']")
 }
-get nmnaccno()
+get nmnaccnotxtfild()
 {
     return $("[name='nominee_ac_no']")
 }
@@ -89,7 +89,7 @@ async Openaccountaction(name, mblno, email, landline, panno, ctznno, homeadr, of
     await this.pincdtxtfild.setValue(pinno)
     await this.areatxtfild.setValue(area)
     await this.nomintxtfild.setValue(nmname)
-    await this.nmnaccno.setValue(nmaccno)
+    await this.nmnaccnotxtfild.setValue(nmaccno)
     await this.gndrDD.selectByVisibleText(gender)
     await this.cityDD.selectByVisibleText(city)
     await this.stateDD.selectByVisibleText(state)

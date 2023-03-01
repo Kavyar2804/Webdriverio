@@ -42,7 +42,11 @@ describe('Login as staff and approve application' , ()=>{
       console.log(`The account number is ${accno}`);
       await browser.acceptAlert()
 
-    
+    })
 
+    it('Logout from application' , async()=>{
+
+        await (await staffhomepage.logoutbtn).waitForClickable({timeout:2000})
+        await staffhomepage.logoutaction()
     })
 })
