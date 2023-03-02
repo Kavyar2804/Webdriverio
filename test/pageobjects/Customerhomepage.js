@@ -33,7 +33,7 @@ class CustomerhomePage
     
         async fndtrnsfraction()
     {
-        await (await this.fndtrnsrbtn).click()
+        await this.fndtrnsrbtn.click()
     }
     async statmnaction()
     {
@@ -41,7 +41,7 @@ class CustomerhomePage
     }
     async homaction()
     {
-        await (await this.homebtn).click()
+        await this.homebtn.click()
     }
     async logoutaction()
     {

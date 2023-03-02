@@ -26,9 +26,9 @@ class Addbenficiarypage
 
     async addbenfiaction(name,accno,ifsc, actype)
     {
-        await (await this.bnfcrynmtxtfild).setValue(name)
-        await (await this.bnrcryacnotxtfild).setValue(accno)
-        await (await this.ifscodetxtfild).setValue(ifsc)
+        await this.bnfcrynmtxtfild.setValue(name)
+        await this.bnrcryacnotxtfild.setValue(accno)
+        await this.ifscodetxtfild.setValue(ifsc)
         await this.acctyodd.selectByVisibleText(actype)
         await this.addbtn.click()
     }

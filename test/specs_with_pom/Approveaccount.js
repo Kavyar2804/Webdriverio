@@ -2,6 +2,7 @@ const staffloginpage = require("../pageobjects/StaffLgnpage")
 const staffhomepage = require("../pageobjects/StaffHomePage")
 const bankinghomepage = require("../pageobjects/BankingHomepage")
 const approveaccountpage = require("../pageobjects/Apprvaccountpage")
+const { expect } = require("chai")
 
 describe('Login as staff and approve application' , ()=>{
 
@@ -12,21 +13,24 @@ describe('Login as staff and approve application' , ()=>{
         await browser.maximizeWindow()
         let title = await browser.getTitle()
         console.log(title);
-        expect(browser).toHaveTitleContaining('Online Banking System')
+        //expect(browser).toHaveTitleContaining('Online Banking System')
+        expect(title).to.contain('Online Banking System')
         await bankinghomepage.staffloginlink()
        let title2 =  await browser.getTitle()
        console.log(title2);
-       expect(browser).toHaveTitleContaining('Staff Page')
-       await (await staffloginpage.lgnbtn).waitForDisplayed({timeout:3000})
+       //expect(browser).toHaveTitleContaining('Staff Page')
+       expect(title2).to.be.contains('Staff Page')
+       expect (await staffloginpage.lgnbtn.waitForClickable({timeout:3000})).to.be.true
        await staffloginpage.stflgnaction(210001,'password')
        let title3= await browser.getTitle()
        console.log(title3);
-       expect(browser).toHaveTitleContaining('Staff Home')
-       await (await staffhomepage.apprvaccbtn).waitForClickable({timeout:2000})
+       //expect(browser).toHaveTitleContaining('Staff Home')
+       expect(title3).to.be.includes('Staff Home')
+       expect( await staffhomepage.apprvaccbtn.waitForClickable({timeout:2000})).to.be.true
        await staffhomepage.apprvcusaction()
-       await (await approveaccountpage.applicatnumtxtfild).waitForDisplayed({timeout:2000})
-       await approveaccountpage.apprvaccaction('362391891')
-
+       expect(await approveaccountpage.applicatnumtxtfild.isDisplayed({timeout:2000})).to.be.true
+       await approveaccountpage.apprvaccaction('368638628')
+      
     })
 
     it('Get account Number' , async ()=>{
@@ -46,7 +50,7 @@ describe('Login as staff and approve application' , ()=>{
 
     it('Logout from application' , async()=>{
 
-        await (await staffhomepage.logoutbtn).waitForClickable({timeout:2000})
+        expect(await staffhomepage.logoutbtn.waitForClickable({timeout:2000})).to.be.true
         await staffhomepage.logoutaction()
     })
 })

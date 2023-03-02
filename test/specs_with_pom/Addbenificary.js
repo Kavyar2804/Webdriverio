@@ -3,6 +3,7 @@
  const custloginpage  =require("../pageobjects/IntrntbankLoginpage")
  const custhmpage =require("../pageobjects/Customerhomepage")
  const fndtrnfrpage = require("../pageobjects/Fundtranferpage")
+const { expect } = require("chai")
 
 describe('Login to application and add benficryia' , ()=>{
 it('Logint to application',async()=>{
@@ -11,44 +12,47 @@ it('Logint to application',async()=>{
     await browser.maximizeWindow()
     let title = await browser.getTitle()
     console.log(title);
-    expect(browser).toHaveTitleContaining('Online Banking System')
+    //expect(browser).toHaveTitleContaining('Online Banking System')
+    expect(title).to.be.include('Online Banking System')
     await browser.scroll(0,500)
-    await (await bankhmpage.HMinterntbnkbtn).waitForDisplayed({timeout:2000})
-    await (await bankhmpage.HMinterntbnkbtn).moveTo()
-    await (await bankhmpage.HMintrntloginbtn).waitForClickable({timeout:2000})
+    expect(await bankhmpage.HMinterntbnkbtn.waitForClickable({timeout:2000})).to.be.true
+    await bankhmpage.HMinterntbnkbtn.moveTo()
+    expect(await bankhmpage.HMintrntloginbtn.waitForClickable({timeout:2000})).to.be.true
     await bankhmpage.intrnbnklogin()
    let title2= await browser.getTitle()
    console.log(title2);
-   expect(browser).toHaveTitleContaining('Login Page')
-   await (await custloginpage.lgnbtn).waitForDisplayed({timeout:2000})
-   await custloginpage.Intrloginaction( 1011519, 'newpassword' )
+   //expect(browser).toHaveTitleContaining('Login Page')
+   expect(title2).to.be.include('Login Page')
+   expect(await custloginpage.lgnbtn.waitForClickable({timeout:2000})).to.be.true
+   await custloginpage.Intrloginaction( 1011518, 'newpassword' )
    let title3 = await browser.getTitle()
    console.log(title3);
-   expect(browser).toHaveTitleContaining('My Profile')
-
-
+   //expect(browser).toHaveTitleContaining('My Profile')
+   expect(title3).to.be.include('My Profile')
 })
 it('Add benficiary' , async()=>{
 
-    await (await custhmpage.fndtrnsrbtn).waitForClickable({timeout:2000})
+    expect(await custhmpage.fndtrnsrbtn.waitForClickable({timeout:2000})).to.be.true
     await custhmpage.fndtrnsfraction()
     let title= await browser.getTitle()
     console.log(title);
-    expect(browser).toHaveTitleContaining('Fund Transfer')
-    await (await fndtrnfrpage.addbnfibtn).waitForDisplayed({timeout:2000})
+    //expect(browser).toHaveTitleContaining('Fund Transfer')
+    expect(title).to.be.include('Fund Transfer')
+    expect(await fndtrnfrpage.addbnfibtn.waitForClickable({timeout:2000})).to.be.true
     await fndtrnfrpage.addbenfiaction()
     let title2 = await browser.getTitle()
     console.log(title2);
-    expect(browser).toHaveTitleContaining('Add Beneficiary')
-    await (await addbenfipage.addbtn).waitForDisplayed({timeout:2000})
-    await addbenfipage.addbenfiaction('Kavya', 1011521011494, 1011,'Saving')
+    //expect(browser).toHaveTitleContaining('Add Beneficiary')
+    expect(title2).to.be.include('Add Beneficiary')
+    expect(await addbenfipage.addbtn.waitForClickable({timeout:2000})).to.be.true
+    await addbenfipage.addbenfiaction('Kavya', 1011541011519, 1011,'Saving')
     await browser.isAlertOpen()
     await browser.getAlertText()
     await browser.acceptAlert()
 
 })
 it('Logout from application' , async()=>{
-    await (await custhmpage.logoutbtn).waitForDisplayed({timeout:2000})
+    expect(await custhmpage.logoutbtn.waitForClickable({timeout:2000})).to.be.true
     await custhmpage.logoutaction()
 
 })

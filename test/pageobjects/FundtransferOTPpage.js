@@ -16,8 +16,8 @@ class FndtransfrOTPage
 
     async otpaction(otp,)
     {
-        await (await this.otpcodetxtfild).setValue(otp)
-        await (await this.otpvrifybtn).click()
+        await this.otpcodetxtfild.setValue(otp)
+        await this.otpvrifybtn.click()
 
     }
 

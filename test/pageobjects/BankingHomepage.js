@@ -60,9 +60,10 @@ class BankHomePage
     }
     async staffloginlink()
     {
-        await (await this.HMstafflgnlink).click()
+        await this.HMstafflgnlink.click()
     }
 
 }
 
 module.exports = new BankHomePage()
+//export default new BankHomePage()

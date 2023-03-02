@@ -31,22 +31,22 @@ class Fundtransferpage
 
     async fundtrnsfraction(benfi, amount, rmrk)
     {
-        await (await this.selectbnfidd).selectByVisibleText(benfi)
-        await (await this.amnttxtfild).setValue(amount)
-        await (await this.rmrktxtfild).setValue(rmrk)
+        await this.selectbnfidd.selectByVisibleText(benfi)
+        await this.amnttxtfild.setValue(amount)
+        await this.rmrktxtfild.setValue(rmrk)
         await this.sndbtn.click()
     }
     async addbenfiaction()
     {
-        await (await this.addbnfibtn).click()
+        await this.addbnfibtn.click()
     }
     async deletebenfiaction()
     {
-        await (await this.deletbnfibtn).click()
+        await  this.deletbnfibtn.click()
     }
     async viwbenfiaction()
     {
-        await (await this.viwbenfibtn).click()
+        await this.viwbenfibtn.click()
     }
 }
 module.exports=new Fundtransferpage()

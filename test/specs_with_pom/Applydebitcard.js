@@ -1,3 +1,4 @@
+const { expect } = require("chai")
 const debitcardpage = require("../pageobjects/ApplydebitcardPage")
 const bankhomepage = require("../pageobjects/BankingHomepage")
 
@@ -9,15 +10,17 @@ describe('Apply for debit card', ()=>{
         await browser.maximizeWindow()
        let title =  await browser.getTitle()
        console.log(title);
-       expect(browser).toHaveTitleContaining('Online Banking System')
+       //expect(browser).toHaveTitleContaining('Online Banking System')
+       expect(title).to.be.include('Online Banking System')
        await browser.scroll(0,500)
        await bankhomepage.applydbtcrd()
        let title2 = await browser.getTitle()
        console.log(title2);
-       expect(browser).toHaveTitleContaining('Apply Debit Card')
-       await (await debitcardpage.APsubmitbtn).waitForClickable({timeout:3000})
-       await debitcardpage.apllydebitcardaction('Kavya', 'abc1234', 9876543210, 1011541011519 )
-       await (await debitcardpage.dobtxtfild).waitForDisplayed({timeout:3000})
+       //expect(browser).toHaveTitleContaining('Apply Debit Card')
+       expect(title2).to.be.equal('Apply Debit Card')
+       expect(await debitcardpage.APsubmitbtn.waitForClickable({timeout:3000})).to.be.true
+       await debitcardpage.apllydebitcardaction('Kavya', 'abc1234', 9876543210, 1011461011518 )
+       expect(await debitcardpage.dobtxtfild.isDisplayed({timeout:3000})).to.be.true
        await browser.keys('2')
        await browser.keys('8')
        await browser.keys('4')

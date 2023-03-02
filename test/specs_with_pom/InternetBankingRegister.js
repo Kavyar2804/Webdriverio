@@ -1,5 +1,6 @@
 const intrntrgstrpage = require("../pageobjects/InternetbankRegisterpage")
  const bankhmpage = require("../pageobjects/BankingHomepage")
+const { expect } = require("chai")
 
 describe('Internet Bamking Registrartion' , ()=>{
 it('Fill form for applying for Internet Banking' , async()=>{
@@ -7,18 +8,20 @@ it('Fill form for applying for Internet Banking' , async()=>{
     await browser.maximizeWindow()
     let title = await browser.getTitle()
     console.log(title);
-    expect(browser).toHaveTitleContaining('Online Banking System')
+    //expect(browser).toHaveTitleContaining('Online Banking System')
+    expect(title).to.be.includes('Online Banking System')
     await browser.scroll(0,500)
-    await (await bankhmpage.HMinterntbnkbtn).waitForDisplayed({timeout:3000})
-    await (await bankhmpage.HMinterntbnkbtn).moveTo()
-    await (await bankhmpage.HMintrntregbtn).waitForDisplayed({timeout:2000})
+    expect( await ankhmpage.HMinterntbnkbtn.waitForClickable({timeout:3000})).to.be.true
+    await bankhmpage.HMinterntbnkbtn.moveTo()
+    expect(await bankhmpage.HMintrntregbtn.waitForClickable({timeout:2000})).to.be.true
     await bankhmpage.intrntbnkreg()
     let title2 = await browser.getTitle()
     console.log(title2);
-    expect (browser).toHaveTitleContaining('Internet Banking Registration')
-    await (await intrntrgstrpage.Intregsubmtbtn).waitForClickable({timeout:3000})
-    await intrntrgstrpage.Intrntregisteraction('Kavya' , 1011541011519, 421369062767, 5383, 9876543210, 'abc1234', 0 , 'newpassword' , 'newpassword')
-    await (await intrntrgstrpage.dobtxtfild).waitForDisplayed({timeout:3000})
+    //expect (browser).toHaveTitleContaining('Internet Banking Registration')
+    expect(title2).to.be.equal('Internet Banking Registration')
+    expect(await intrntrgstrpage.Intregsubmtbtn.waitForClickable({timeout:3000})).to.be.true
+    await intrntrgstrpage.Intrntregisteraction('Kavya' , 1011461011518, 421322745568, 7642, 9876543210, 'abc1234', 0 , 'newpassword' , 'newpassword')
+    expect(await intrntrgstrpage.dobtxtfild.isDisplayed({timeout:3000})).to.be.true
     await browser.keys('2')
     await browser.keys('8')
     await browser.keys('4')
