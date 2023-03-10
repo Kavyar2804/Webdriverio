@@ -26,13 +26,24 @@
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        //  './test/specs/**/*.js',   //complete folder
+        // './test/specs_with_pom/**/*.js'
+        //'./test/specs/Assignment/igpcakes.js'
+        './test/specs_with_pom/Openaccount.js',
+         './test/specs_with_pom/Creditcustomer.js',
+        './test/specs_with_pom/Fundtransfer.js'
     ],
-    // Patterns to exclude.
+
+ 
+    suites:{
+        regression:['./test/specs_with_pom/Openaccount.js', './test/specs_with_pom/Creditcustomer.js']
+
+    },
+       // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
-    //
+    // 
     // ============
     // Capabilities
     // ============
@@ -54,13 +65,13 @@
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
+    capabilities: [
+        {
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
-        //
+        maxInstances: 1,
         browserName: 'chrome',
         acceptInsecureCerts: true,
         // If outputDir is provided WebdriverIO can capture driver session logs
@@ -68,6 +79,7 @@
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
 
+        //to handle notification popup
         'goog:chromeOptions': {
             prefs: {
               // 0 - Default, 1 - Allow, 2 - Block
@@ -75,7 +87,19 @@
             }
           }
 
-    }],
+    }
+    // {
+    //     maxInstances: 1,
+    //     browserName: 'firefox',
+    //     acceptInsecureCerts: true,
+    // } ,
+
+    // {
+    //     maxInstances: 1,
+    //     browserName: 'MicrosoftEdge',
+    //     acceptInsecureCerts: true,
+    // }
+],
 
    
     //
@@ -103,7 +127,7 @@
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
+    bail: 2,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -125,7 +149,7 @@
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['chromedriver'], //'selenium-standalone'
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -148,6 +172,12 @@
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec'],
+
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
 
 
     
@@ -254,8 +284,15 @@
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: 
+    // async function(test, context, { error, result, duration, passed, retries }) {
     // },
+
+    async function (step, scenario, { error, duration, passed }, context) {
+        if (error) {
+          await browser.takeScreenshot();
+        }
+      }
 
 
     /**

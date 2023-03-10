@@ -9,7 +9,7 @@ const Bankinghomepage = require("../pageobjects/BankingHomepage")
 
 describe('Apply for account opening through online' , ()=>{
 
-it('Fill Open account form' , async ()=>{
+it('Fill Open account form smoke' , async ()=>{
 await browser.url("http://testingserver/domain/Online_Banking_System/")
 await browser.maximizeWindow()
 title1 = await browser.getTitle()
@@ -39,7 +39,7 @@ await Oarecnfrmpage.recnfrmaction()
 
 it('Capture Application no' , async ()=>{
 
-    await browser.isAlertOpen()
+  //await browser.isAlertOpen()
   let txt = await browser.getAlertText()
   let txt1 = txt.split("")
   console.log(txt1);
@@ -53,4 +53,3 @@ it('Capture Application no' , async ()=>{
 })
 
 })
-

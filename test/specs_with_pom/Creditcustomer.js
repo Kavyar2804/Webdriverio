@@ -8,7 +8,7 @@ const custhmpage =require("../pageobjects/Customerhomepage")
 const { expect } = require("chai")
 
 describe('Login to application and credit customer' , ()=>{
-    it('Login to application' , async()=>{
+    it('Login to application smoke' , async()=>{
 
         await browser.url("http://testingserver/domain/Online_Banking_System/")
         await browser.maximizeWindow()
