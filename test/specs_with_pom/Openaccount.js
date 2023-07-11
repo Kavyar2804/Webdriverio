@@ -9,8 +9,8 @@ const Bankinghomepage = require("../pageobjects/BankingHomepage")
 
 describe('Apply for account opening through online' , ()=>{
 
-it('Fill Open account form smoke' , async ()=>{
-await browser.url("http://testingserver/domain/Online_Banking_System/")
+it('Fill Open account form' , async ()=>{
+await browser.url("http://rmgtestingserver/domain/Online_Banking_System/")
 await browser.maximizeWindow()
 title1 = await browser.getTitle()
 console.log(title1);
@@ -27,7 +27,7 @@ await browser.keys('1')
 await browser.keys('9')
 await browser.keys('9')
 await browser.keys('3')
-await Openaccountpage.Openaccountaction('Kavya', 9876543210,'kavyar@gmail.com', 08024455667,'abc1234',123456789,'Moodalapalya','Katriguppe',560087,'Bangalore', 'XYZ', 889977456130 , 'Female', 'Texas City','Texas', 'Saving')
+await Openaccountpage.Openaccountaction('Kavya', 9876543210,'kavyar@gmail.com', '08024455667','abc1234',123456789,'Moodalapalya','Katriguppe',560087,'Bangalore', 'XYZ', 889977456130 , 'Female', 'Texas City','Texas', 'Saving')
 expect (await Openaccountpage.OAsubmitbtn.waitForClickable({timeout:2000})).to.be.true
 await Openaccountpage.Openaccounsubmit()
 expect (await Oarecnfrmpage.OAResubmitbtn.waitForClickable({timeout:3000})).to.be.true

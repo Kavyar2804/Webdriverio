@@ -2,15 +2,16 @@
 //staff and approve the apllication
 //export{accountno}
 
-describe('Opening account and Approve', ()=>{
+describe('Opening account and Approve ', async ()=>{
    let appno=0
    let accountno=0
 
-it('EntertheApplicationdetails', async ()=>{
-   await browser.url("http://testingserver/domain/Online_Banking_System/")
+it('EntertheApplicationdetails smoke', async ()=>{
+   await browser.url("http://rmgtestingserver/domain/Online_Banking_System/")
    await browser.maximizeWindow()
    await browser.scroll(0, 200)
    let ele1 = await browser.$("li=Open Account")
+   //await ele1.rightClick()
    await ele1.waitForClickable({timeout:3000})
    await browser.$("li=Open Account").click()
    await expect (browser).toHaveTitleContaining('Registration Form')
@@ -67,7 +68,7 @@ it('EntertheApplicationdetails', async ()=>{
 it('Approving the application', async () =>
 {
 
-await browser.url("http://testingserver/domain/Online_Banking_System/")
+await browser.url("http://rmgtestingserver/domain/Online_Banking_System/")
 let ele1 = await browser.$("a[href='staff_login.php']")
 await ele1.waitForClickable({timeout:3000})
 await browser.$("a[href='staff_login.php']").click()
@@ -129,6 +130,4 @@ it('Logout from application', async ()=>{
    await browser.$("[name='logout_btn']").click()
 
 })
-
-
 })

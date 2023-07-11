@@ -56,6 +56,13 @@ it('Logout from application' , async()=>{
     await custhmpage.logoutaction()
 
 })
+try
+{
 
+}
+catch
+{
+    
+}
 
 })

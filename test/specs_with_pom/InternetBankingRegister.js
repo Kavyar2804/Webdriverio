@@ -1,10 +1,11 @@
+
 const intrntrgstrpage = require("../pageobjects/InternetbankRegisterpage")
  const bankhmpage = require("../pageobjects/BankingHomepage")
 const { expect } = require("chai")
 
 describe('Internet Bamking Registrartion' , ()=>{
 it('Fill form for applying for Internet Banking' , async()=>{
-    await browser.url("http://testingserver/domain/Online_Banking_System/index.php")
+    await browser.url("http://rmgtestingserver/domain/Online_Banking_System/index.php")
     await browser.maximizeWindow()
     let title = await browser.getTitle()
     console.log(title);

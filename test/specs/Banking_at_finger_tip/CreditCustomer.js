@@ -4,7 +4,7 @@
 
 describe('Login and credit customer' , ()=>{
 
-it('Login', async ()=>{
+it('Login smoke', async ()=>{
 
 await browser.url("http://testingserver/domain/Online_Banking_System/")
 await browser.maximizeWindow()

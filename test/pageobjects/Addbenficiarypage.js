@@ -35,3 +35,4 @@ class Addbenficiarypage
 }
 
 module.exports=new Addbenficiarypage()
+
