@@ -95,11 +95,11 @@
         acceptInsecureCerts: true,
     } ,
 
-    // {
-    //     maxInstances: 1,
-    //     browserName: 'MicrosoftEdge',
-    //     acceptInsecureCerts: true,
-    // }
+    {
+        maxInstances: 1,
+        browserName: 'MicrosoftEdge',
+        acceptInsecureCerts: true,
+    }
 ],
 
    
