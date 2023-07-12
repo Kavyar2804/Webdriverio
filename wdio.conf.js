@@ -67,33 +67,33 @@
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-        {
+    //     {
     
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 1,
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-
-        //to handle notification popup
-        'goog:chromeOptions': {
-            prefs: {
-              //0 - Default, 1 - Allow, 2 - Block
-              'profile.managed_default_content_settings.notifications': 2
-            }
-          }
-
-    }
-    // {
+    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+    //     // grid with only 5 firefox instances available you can make sure that not more than
+    //     // 5 instances get started at a time.
     //     maxInstances: 1,
-    //     browserName: 'firefox',
+    //     browserName: 'chrome',
     //     acceptInsecureCerts: true,
-    // } ,
+    //     // If outputDir is provided WebdriverIO can capture driver session logs
+    //     // it is possible to configure which logTypes to include/exclude.
+    //     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+    //     // excludeDriverLogs: ['bugreport', 'server'],
+
+    //     //to handle notification popup
+    //     'goog:chromeOptions': {
+    //         prefs: {
+    //           //0 - Default, 1 - Allow, 2 - Block
+    //           'profile.managed_default_content_settings.notifications': 2
+    //         }
+    //       }
+
+    // }
+    {
+        maxInstances: 1,
+        browserName: 'firefox',
+        acceptInsecureCerts: true,
+    } ,
 
     // {
     //     maxInstances: 1,
