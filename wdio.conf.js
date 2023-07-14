@@ -28,11 +28,16 @@
     specs: [
         //  './test/specs/**/*.js',   //complete folder
         // './test/specs_with_pom/**/*.js' //** all files in that folder /*.js which is having .js extension
-        //'./test/specs/Assignment/igpcakes.js'
+        './test/specs/Assignment/igpcakes.js',
         // './test/specs_with_pom/Openaccount.js',
         //  './test/specs_with_pom/Creditcustomer.js',
         // './test/specs_with_pom/Fundtransfer.js'
-        './test/specs/trail.js'
+        './test/specs/trail.js',
+        'test/specs/Assignment/calendarpopup.js',
+        'test/specs/Assignment/dropdown.js',
+        'test/specs/Assignment/findelements2.js',
+        'test/specs/Assignment/mousehover.js'
+
     ],
 
  
@@ -89,17 +94,17 @@
           }
 
     },
-    {
-        maxInstances: 1,
-        browserName: 'firefox',
-        acceptInsecureCerts: true,
-    } ,
+    // {
+    //     maxInstances: 1,
+    //     browserName: 'firefox',
+    //     acceptInsecureCerts: true,
+    // } ,
 
-    {
-        maxInstances: 1,
-        browserName: 'MicrosoftEdge',
-        acceptInsecureCerts: true,
-    }
+    // {
+    //     maxInstances: 1,
+    //     browserName: 'MicrosoftEdge',
+    //     acceptInsecureCerts: true,
+    // }
 ],
 
    
@@ -150,7 +155,7 @@
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['selenium-standalone'], // 'chromedriver' 
+    services: ['chromedriver'], // '' selenium-standalone
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
